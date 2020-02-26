@@ -1,4 +1,4 @@
-const {mongoose} = require("../database/dbSetup.js")
+const { mongoose } = require("../database/dbSetup.js");
 const productSchema = new mongoose.Schema({
   id: { type: Number, unique: true },
   name: String,
@@ -6,12 +6,7 @@ const productSchema = new mongoose.Schema({
   description: String,
   category: String,
   default_price: Number,
-  features: [
-    {
-      feature: String,
-      value: String
-    }
-  ]
+  features: [Object]
 });
 
 const Product = mongoose.model("Product", productSchema);
