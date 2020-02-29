@@ -1,4 +1,4 @@
-version: "2"
+version: "3.2"
 services: 
   web:
     build: .
@@ -11,6 +11,25 @@ services:
     ports:
       - "27017:27017"
     volumes: 
-      - db-data:/var/lib/db/data
+      - db-data:/var/lib/mongo
+
+  mongo-seed:
+    image: stefanwalther/mongo-seed
+    container_name: mongo-seed
+    environment:
+      - MONGODB_HOST=mongo
+      - MONGODB_PORT=27017
+    depends_on:
+      - mongo
+    volumes:
+      - type: bind
+        source: ./
+        target: /var/lib/data/
+    command: [
+      "mongoimport --host=mongo --port=27017 --db=products --collection=relateds  --type=json --file=/var/lib/data/relateds.json --drop",
+      "mongoimport --host=mongo --port=27017 --db=products --collection=styles--type=json --file=/var/lib/data/styles.json --drop",
+      "mongoimport --host=mongo --port=27017 --db=products --collection=products  --type=json --file=/var/lib/data/products.json --drop"
+    ]
+
 volumes:
-  db-data
+  db-data:

@@ -107,4 +107,4 @@ app.get('/products/:product_id/related', (req, res) => {
         res.send(err);
     })
 })
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`Connected on port ${port}!`));
