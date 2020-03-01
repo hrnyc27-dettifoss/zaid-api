@@ -3,33 +3,19 @@ services:
   web:
     build: .
     ports: 
-      - "3000:3000"
+      - "3000:3000" # requests made to the host on port 3000 are mapped to container's port 3000
     depends_on:
       - mongo
   mongo:
     image: mongo
     ports:
-      - "27017:27017"
+      - "27017:27017" # mongodb port is mapped, so express container sends to 27017 to host, which comes back to mongo container
     volumes: 
       - db-data:/var/lib/mongo
-
-  mongo-seed:
-    image: stefanwalther/mongo-seed
-    container_name: mongo-seed
-    environment:
-      - MONGODB_HOST=mongo
-      - MONGODB_PORT=27017
-    depends_on:
-      - mongo
-    volumes:
       - type: bind
-        source: ./
-        target: /var/lib/data/
-    command: [
-      "mongoimport --host=mongo --port=27017 --db=products --collection=relateds  --type=json --file=/var/lib/data/relateds.json --drop",
-      "mongoimport --host=mongo --port=27017 --db=products --collection=styles--type=json --file=/var/lib/data/styles.json --drop",
-      "mongoimport --host=mongo --port=27017 --db=products --collection=products  --type=json --file=/var/lib/data/products.json --drop"
-    ]
+        source: ./seed
+        target: /seed
+        read_only: true
 
 volumes:
   db-data:

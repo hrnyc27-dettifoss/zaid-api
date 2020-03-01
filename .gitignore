@@ -1,3 +1,4 @@
 node_modules/
 sdc_app_data/
 package-lock.json
+seed/
