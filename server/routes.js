@@ -6,6 +6,9 @@ const { Style } = require("../models/style.js");
 const { RelatedProducts } = require("../models/relatedProduct.js");
 const _ = require("underscore");
 
+app.get("/", (req, res) => {
+  res.send("Test Success");
+});
 app.get("/products/list", (req, res) => {
   let page = req.query.page || 1;
   let count = req.query.count || 5;
