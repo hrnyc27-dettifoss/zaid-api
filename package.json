@@ -12,7 +12,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^5.9.1",
-    "papaparse": "^5.1.1"
+    "papaparse": "^5.1.1",
+    "underscore": "^1.9.2"
   },
   "devDependencies": {
     "underscore": "^1.9.2"
