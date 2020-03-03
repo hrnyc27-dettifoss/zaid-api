@@ -6,9 +6,10 @@ const { Style } = require("../models/style.js");
 const { RelatedProducts } = require("../models/relatedProduct.js");
 const _ = require("underscore");
 
-app.use(express.static("loaderio-02b5033c16a569f322adff8edb0c0765.txt"));
-app.get("/", (req, res) => {
-  res.send("Test Success");
+
+app.get("/loaderio-02b5033c16a569f322adff8edb0c0765/", (req, res) => {
+  //res.sendFile(__dirname + "./token.txt");
+  res.sendFile(__dirname + "/token.txt");
 });
 app.get("/products/list", (req, res) => {
   let page = req.query.page || 1;
