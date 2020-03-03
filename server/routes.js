@@ -6,6 +6,7 @@ const { Style } = require("../models/style.js");
 const { RelatedProducts } = require("../models/relatedProduct.js");
 const _ = require("underscore");
 
+app.use(express.static("loaderio-02b5033c16a569f322adff8edb0c0765.txt"));
 app.get("/", (req, res) => {
   res.send("Test Success");
 });
