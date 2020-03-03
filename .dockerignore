@@ -1,4 +1,5 @@
-node_modules/
-sdc_app_data/
+node_modules
+sdc_app_data
 .git
-seed/
+seed
+npm-debug.log
