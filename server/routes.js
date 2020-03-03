@@ -5,8 +5,9 @@ const { Product } = require("../models/product.js");
 const { Style } = require("../models/style.js");
 const { RelatedProducts } = require("../models/relatedProduct.js");
 const _ = require("underscore");
+const morgan = require("morgan");
 
-
+app.use(morgan("dev"));
 app.get("/loaderio-02b5033c16a569f322adff8edb0c0765/", (req, res) => {
   //res.sendFile(__dirname + "./token.txt");
   res.sendFile(__dirname + "/token.txt");
